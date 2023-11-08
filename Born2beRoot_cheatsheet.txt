@@ -1,0 +1,85 @@
+check password policy:
+	sudo chage -l username
+
+check ufw:
+	sudo service ufw status
+	sudo ufw status
+
+check ssh:
+	sudo service ssh status
+	sudo systemctl status ssh
+
+show current os:
+	cat /etc/os-release
+
+User & Password:
+	create new user:
+		sudo adduser new_username
+	show password policy files:
+		sudo nano /etc/pam.d/common-password
+		sudo nano /etc/login.defs
+		sudo nano /etc/sudoers
+
+Groups:
+	check groups:
+		getent group groupname
+		groups username
+	create group:
+		sudo groupadd evaluating
+	assign user to group:
+		sudo usermod -aG evaluating new_username
+
+Hostname and partitions:
+	show hostname:
+		hostnamectl
+	change hostname:
+		sudo hostnamectl set-hostname new_hostname
+	server reboot:
+		sudo reboot
+	show partitions:
+		lsblk
+
+Sudo:
+	check sudo:
+		dpkg -l | grep sudo
+	assign to group sudo:
+		sudo usermod -aG group username
+	show sudo log file:
+		cd /var/log/sudo/sudo.log
+
+UFW:
+	check ufw status:
+		sudo service ufw status
+		sudo ufw status numbered
+	add port:
+		sudo ufw allow 8080
+	delete port:
+		sudo ufw delete 4
+
+SSH:
+	check ssh (SecureShell):
+		sudo service ssh status
+	login ssh:
+		ssh username@127.0.0.1 -p 4242
+	check port (Port 4242):
+		sudo nano /etc/ssh/sshd-config
+
+Cron:
+	show monitoring script:
+		cd /usr/local/bin && nano monitoring.sh
+	change crontab:
+		sudo crontab -u root -e
+	start & stop cron:
+		sudo service cron start/ stop
+		sudo cronstop
+		sudo cronstart
+
+
+BONUS:
+	wordpress:
+
+	mariadb:
+
+	lighttpd:
+
+	tor:
